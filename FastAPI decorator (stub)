@@ -1,0 +1,9 @@
+from fastapi import FastAPI
+from openlibx402_fastapi import payment_required
+
+app = FastAPI()
+
+@app.get("/report")
+@payment_required(amount="0.25", token_mint="USDC_MINT")
+async def report():
+    return {"ok": True}
