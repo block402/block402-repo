@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from openlibx402_fastapi import payment_required
+from block402_fastapi import payment_required
 
 app = FastAPI()
 
