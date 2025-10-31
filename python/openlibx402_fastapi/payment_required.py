@@ -1,15 +1,18 @@
 from functools import wraps
 from fastapi import HTTPException
 
-def payment_required(amount: str = "0.10", payment_address: str | None = None, token_mint: str | None = None):
+def payment_required(amount: str = "0.10",
+                     payment_address: str | None = None,
+                     token_mint: str | None = None):
     """
-    Minimal decorator that simulates a 402 if no proof header is present.
-    Replace with real on-chain verification in production.
+    Block402 FastAPI decorator to require x402-style payment before access.
+    Replace this stub with on-chain verification for production.
     """
     def decorator(fn):
         @wraps(fn)
         async def wrapper(*args, **kwargs):
-            # In a real impl, inspect the request for a receipt and verify.
+            # In a real implementation, inspect request headers for a proof (receipt/tx)
+            # and verify it before allowing access.
             raise HTTPException(status_code=402, detail={
                 "error": "Payment Required",
                 "amount": amount,
