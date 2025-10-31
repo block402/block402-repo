@@ -1,0 +1,9 @@
+import express from "express"
+import { paymentRequired } from "@block402/express"
+
+const app = express()
+app.get("/premium",
+  paymentRequired({ amount: "0.10", tokenMint: "USDC" }),
+  (req, res) => res.json({ data: "premium" })
+)
+app.listen(3000)
